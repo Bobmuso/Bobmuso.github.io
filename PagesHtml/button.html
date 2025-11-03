@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Octagon Click Counter Button with Sound</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; margin-top: 50px; }
+    .octagon-btn {
+      font-size: 2rem;
+      padding: 30px 60px;
+      background: #3c82f6;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      clip-path: polygon(
+        30% 0, 70% 0,
+        100% 30%, 100% 70%,
+        70% 100%, 30% 100%,
+        0 70%, 0 30%
+      );
+      transition: background 0.2s;
+    }
+    .octagon-btn:active {
+      background: #2456af;
+    }
+    p { font-size: 1.5rem; margin: 20px 0 0 0; }
+  </style>
+</head>
+<body>
+  <button class="octagon-btn" id="countBtn">Click Me!</button>
+  <p>Count: <span id="count">0</span></p>
+  <audio id="clickAudio" src="https://cdn.pixabay.com/audio/2022/08/20/audio_13k3l1y8.mp3"></audio>
+  <script>
+    let count = 0;
+    const btn = document.getElementById('countBtn');
+    const countDisplay = document.getElementById('count');
+    const clickAudio = document.getElementById('clickAudio');
+
+    btn.onclick = function() {
+      count++;
+      countDisplay.textContent = count;
+      clickAudio.currentTime = 0;
+      clickAudio.play();
+    };
+  </script>
+</body>
+</html>
