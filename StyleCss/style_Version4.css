@@ -1,0 +1,163 @@
+body {
+  font-family: "Orbitron", "Segoe UI", sans-serif;
+  background: radial-gradient(ellipse at top left, #121e38 75%, #131d29 100%) fixed;
+  color: #fafffc;
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+h1 {
+  text-shadow: 0 0 10px #83f4f3, 0 0 3px #7000ff;
+  font-family: "Orbitron", "Segoe UI", sans-serif;
+  text-align: center;
+  margin: 20px 0 10px 0;
+}
+
+#game-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.deck-zone, .foundation-zone, .tableau-zone {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.deck-zone .pile, .deck-zone .pile-label {
+  display: block;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.pile-label {
+  font-size: 1em;
+  opacity: 0.7;
+}
+
+.pile {
+  background: rgba(20,40,60,0.65);
+  border: 2.5px dashed #ababff60;
+  border-radius: 14px;
+  min-width: 68px;
+  min-height: 98px;
+  min-height: 98px;
+  padding: 10px;
+  position: relative;
+}
+
+.foundation-zone {
+  gap: 16px;
+}
+.foundation-pile {
+  margin: 0 5px;
+}
+
+.tableau-zone {
+  gap: 17px;
+  margin-bottom: 15px;
+}
+
+.card {
+  width: 64px;
+  height: 94px;
+  border-radius: 9px;
+  margin: 0 2px 0 2px;
+  padding: 0;
+  background: linear-gradient(145deg, #ececf8 70%, #c8daef 100%);
+  color: #25292f;
+  font-size: 2em;
+  font-family: 'Orbitron', 'Segoe UI', sans-serif;
+  font-weight: bold;
+  letter-spacing: 0.11em;
+  box-shadow: 0 0 24px 4px #3338a0, 0 0 5px #7000ff inset;
+  border: 2px solid #3b4cb7;
+  position: absolute;
+  left: 0; top: 0;
+  user-select: none;
+  cursor: grab;
+  z-index: 1;
+  /* Card float animation */
+  animation: floatcard 4.5s infinite cubic-bezier(0.4,0.6,0.7,1.0);
+}
+
+.card.red { color: #cd2327; }
+.card.spade, .card.club { color: #2f3c48; }
+
+@keyframes floatcard {
+  0%    { transform: translate(0px, 0px) rotate(-1deg); }
+  18%   { transform: translate(2px, 4px) rotate(2deg); }
+  36%   { transform: translate(-3px, -2px) rotate(-3deg); }
+  55%   { transform: translate(5px, 5px) rotate(3deg); }
+  63%   { transform: translate(-8px, 2px) rotate(-2deg);}
+  81%   { transform: translate(2px, -4px) rotate(1deg);}
+  100%  { transform: translate(0px, 0px) rotate(-1deg); }
+}
+
+.card.selected {
+  box-shadow: 0 0 40px 7px #abfdff, 0 0 7px 2px #fff;
+  outline: 3px solid #83f4f3;
+  z-index: 3;
+}
+
+.card.face-down {
+  background: linear-gradient(145deg, #19315a 70%, #1a3d64 100%);
+  border: 2.5px solid #5959a6;
+  color: #202b32;
+  box-shadow: 0 0 18px 2px #316ab2 inset, 0 0 9px 2px #1a3062;
+}
+.card.dragging {
+  opacity: 0.7;
+  z-index: 50;
+}
+
+.pile.drop-target {
+  box-shadow: 0 0 20px 2px #a5ffd7;
+  border-color: #b5f7bc;
+}
+
+.restart-btn {
+  display: block;
+  margin: 20px auto 10px auto;
+  padding: 10px 30px;
+  background: #83f4f3;
+  color: #1e2740;
+  border-radius: 14px;
+  border: none;
+  box-shadow: 0 2px 8px #26236344;
+  font-size: 1.2em;
+  cursor: pointer;
+  font-family: "Orbitron", "Segoe UI", sans-serif;
+}
+.restart-btn:hover {
+  background: #7000ff;
+  color: #d0eafd;
+}
+
+#win-msg {
+  font-size: 1.4em;
+  color: #89f7ff;
+  text-align: center;
+  margin-top: 10px;
+  text-shadow: 0 0 7px #fffb;
+}
+
+/* Star field (for spacey look) */
+body::before {
+  content: "";
+  display: block;
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    repeating-radial-gradient(circle at 20% 40%, #fff3 1px, transparent 3px 40px),
+    repeating-radial-gradient(circle at 70% 90%, #fff4 1.5px, transparent 3px 60px),
+    repeating-radial-gradient(circle at 13% 77%, #fff7 1px, transparent 2.5px 80px),
+    repeating-radial-gradient(circle at 45% 13%, #fff3 1.6px, transparent 2px 40px);
+  opacity: 0.55;
+}
