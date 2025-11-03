@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Space Solitaire</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>🚀 Space Solitaire</h1>
+  <div id="game-container">
+    <div class="deck-zone">
+      <div class="pile-label">Deck</div>
+      <div class="pile" id="deck-pile"></div>
+      <div class="pile-label">Waste</div>
+      <div class="pile" id="waste-pile"></div>
+    </div>
+    <div class="foundation-zone" id="foundations"></div>
+    <div class="tableau-zone" id="tableau"></div>
+  </div>
+  <button class="restart-btn" onclick="restartGame()">Restart Game</button>
+  <p id="win-msg"></p>
+  <script src="solitaire.js"></script>
+</body>
+</html>
